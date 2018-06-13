@@ -39,6 +39,18 @@ if test "x$enable_logging" = xyes; then
    AC_DEFINE([LOGGING], 1, [If true, turn on netCDF logging.])
 fi
 
+# Does the user want to run tests? Tests are turned off by default so
+# that a combined build package can include the dispatch library and
+# netCDF. The dispatch library is built first, so cannot run tests
+# that require the netCDF library.
+AC_MSG_CHECKING([whether tests are enabled])
+AC_ARG_ENABLE([tests],
+              [AS_HELP_STRING([--enable-tests],
+                              [Run tests with make check.])])
+test "x$enable_tests" = xyes || enable_tests=no
+AC_MSG_RESULT([$enable_tests])
+AM_CONDITIONAL(ENABLE_TESTS,[test x$enable_tests = xyes])
+
 # Checks for libraries.
 AC_CHECK_LIB(netcdf, nc_def_user_format)
 if test x${ac_cv_lib_netcdf_nc_def_user_format} != xyes; then

@@ -43,7 +43,10 @@ extern "C" {
                 int use_parallel, void* parameters, NC_Dispatch*, NC*);
 
    extern int
-   NC_HDF4_close(int ncid);
+   NC_HDF4_abort(int ncid);
+      
+   extern int
+   NC_HDF4_close(int ncid, void *unused);
 
    extern int
    NC_HDF4_inq_format(int ncid, int *formatp);
