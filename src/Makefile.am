@@ -3,7 +3,7 @@
 
 # Ed Hartnett 6/2/18
 
-AM_CPPFLAGS = -I$(top_srcdir)/include 
+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/../netcdf-c/include
 
 # This is our output. 
 lib_LTLIBRARIES = libncsample.la

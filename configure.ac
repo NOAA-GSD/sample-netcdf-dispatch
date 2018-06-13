@@ -53,7 +53,7 @@ AM_CONDITIONAL(ENABLE_TESTS,[test x$enable_tests = xyes])
 
 # Checks for libraries.
 AC_CHECK_LIB(netcdf, nc_def_user_format)
-if test x${ac_cv_lib_netcdf_nc_def_user_format} != xyes; then
+if test $enable_tests = yes -a x${ac_cv_lib_netcdf_nc_def_user_format} != xyes; then
    AC_MSG_ERROR([Must have netcdf])
 fi
 
